@@ -8,7 +8,7 @@ Citation: Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D
 
 
 
-# Gear info:
+### Gear info: ###
 
 Developed for use by the Neuroimaging of Coma and Consciousness Laboratory at Massachusetts General Hospital.
 
