@@ -1,6 +1,6 @@
 {
-    "name": "optiBET-An Optimized Brain Extraction Tool using FSL BET",
-    "label": "FSL: FMRIB Automated Segmentation Tool (FAST4, v5.0.9)",
+    "name": "optiBET",
+    "label": "optiBET-An Optimized Brain Extraction Tool using FSL BET.",
     "description": "optiBET is a shell script to perform brain-extractions even in patients brain, where extensive pathology is present.",
     "maintainer": "Ryan Cali <rcali@mgh.harvard.edu>",
     "author": "Analysis Group, FMRIB, Oxford, UK./Montilab at UCLA",
