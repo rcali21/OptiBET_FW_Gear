@@ -10,10 +10,20 @@
     "license": "Apache-2.0",
     "flywheel": "0",
     "version": "1",
-    "custom": {
-      "docker-image": "scitran/fsl-fast:v0.1.1"
-    },
-    "config": {
+    "environment": {
+      "FLYWHEEL": "/flywheel/v0"
+  },
+    
+  "custom": {
+    "gear-builder": {
+      "category": "analysis",
+      "image": "rcali/optibet:1.0.0",
+    
+    "flywheel": {
+      "suite": "Flywheel optiBET Gear"
+    }
+  },
+  "config": {
       "Use FSL": {
         "description": "Script uses FSL for initial extraction default=True.",
         "default": true,
@@ -49,7 +59,7 @@
         "default": false,
         "type": "boolean",
         "id": "-d"
-      },
+      }
     },
     "inputs": {
       "nifti": {
@@ -62,4 +72,6 @@
         }
       }
     }
-  }
+  },
+  "command":"bash optiBET.sh"
+}
