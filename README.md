@@ -8,6 +8,14 @@ Citation: Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D
 
 
 
+FSL Brain Extraction Tool (BET): https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide
+
+Citation: M. Jenkinson, M. Pechaud, and S. Smith. BET2: MR-based estimation of brain, skull and scalp surfaces. In Eleventh Annual Meeting of the Organization for Human Brain Mapping, 2005.
+
+AFNI 3dSkullStrip: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html
+
+
+
 ### Gear info: ###
 
 Developed for use by the Neuroimaging of Coma and Consciousness Laboratory at Massachusetts General Hospital.
