@@ -14,37 +14,37 @@
       "docker-image": "scitran/fsl-fast:v0.1.1"
     },
     "config": {
-      "nobias": {
-        "description": "script uses FSL for initial extraction (default)",
-        "default": false,
+      "Use FSL": {
+        "description": "Script uses FSL for initial extraction default=True.",
+        "default": true,
         "type": "boolean",
         "id": "-f"
       },
-      "nopve": {
+      "Use AFNI": {
         "description": "Script uses AFNI for initial extraction. default=false",
         "default": false,
         "type": "boolean",
         "id": "-a"
       },
-      "segments": {
+      "MNI152 1mm T1w mask": {
         "description": "Script uses MNI152_T1_1mm_brain_mask.nii.gz for mask default=True.",
-        "default": false,
+        "default": true,
         "type": "boolean",
         "id": "-o"
       },
-      "mixel": {
+      "MNI152 2mm T1w mask": {
         "description": "Script uses MNI152_T1_2mm_brain_mask.nii.gz for mask.",
         "default": false,
         "type": "boolean",
         "id": "-t"
       },
-      "fHard": {
+      "Avg152T1_brain mask": {
         "description": "Script uses avg152T1_brain.nii.gz for mask",
         "default": false,
         "type": "boolean",
         "id": "-g"
       },
-      "Hyper": {
+      "Run in debug mode (more files will be generated)": {
         "description": "Use debug mode (will NOT delete intermediate files)",
         "default": false,
         "type": "boolean",
