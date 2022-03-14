@@ -1,5 +1,5 @@
 {
-  "name": "optiBET",
+  "name": "optibet",
   "label": "optiBET-An Optimized Brain Extraction Tool using FSL BET.",
   "description": "optiBET is a shell script to perform brain-extractions even in patients brain, where extensive pathology is present.",
   "maintainer": "Ryan Cali <rcali@mgh.harvard.edu>",
@@ -17,37 +17,37 @@
     }
   },
     "config": {
-      "Use FSL": {
+      "use fsl": {
         "description": "Script uses FSL for initial extraction default=True.",
         "default": true,
         "type": "boolean",
         "id": "-f"
       },
-      "Use AFNI": {
+      "use afni": {
         "description": "Script uses AFNI for initial extraction. default=false",
         "default": false,
         "type": "boolean",
         "id": "-a"
       },
-      "MNI152 1mm T1w mask": {
+      "mni152 1mm t1w mask": {
         "description": "Script uses MNI152_T1_1mm_brain_mask.nii.gz for mask default=True.",
         "default": true,
         "type": "boolean",
         "id": "-o"
       },
-      "MNI152 2mm T1w mask": {
+      "mni152 2mm t1w mask": {
         "description": "Script uses MNI152_T1_2mm_brain_mask.nii.gz for mask.",
         "default": false,
         "type": "boolean",
         "id": "-t"
       },
-      "Avg152T1_brain mask": {
+      "avg152t1_brain mask": {
         "description": "Script uses avg152T1_brain.nii.gz for mask",
         "default": false,
         "type": "boolean",
         "id": "-g"
       },
-      "Run in debug mode (more files will be generated)": {
+      "debug": {
         "description": "Use debug mode (will NOT delete intermediate files)",
         "default": false,
         "type": "boolean",
