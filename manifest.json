@@ -1,29 +1,22 @@
 {
-    "name": "optiBET",
-    "label": "optiBET-An Optimized Brain Extraction Tool using FSL BET.",
-    "description": "optiBET is a shell script to perform brain-extractions even in patients brain, where extensive pathology is present.",
-    "maintainer": "Ryan Cali <rcali@mgh.harvard.edu>",
-    "author": "Analysis Group, FMRIB, Oxford, UK./Montilab at UCLA",
-    "cite": "Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D., Owen, A. M., & Monti, M. M. (2014). Optimized brain extraction for pathological brains (optiBET). PloS one, 9(12), e115551.",
-    "url": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
-    "source": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
-    "license": "Apache-2.0",
-    "flywheel": "0",
-    "version": "1",
-    "environment": {
-      "FLYWHEEL": "/flywheel/v0"
-  },
-    
-  "custom": {
+  "name": "optiBET",
+  "label": "optiBET-An Optimized Brain Extraction Tool using FSL BET.",
+  "description": "optiBET is a shell script to perform brain-extractions even in patients brain, where extensive pathology is present.",
+  "maintainer": "Ryan Cali <rcali@mgh.harvard.edu>",
+  "author": "Analysis Group, FMRIB, Oxford, UK./Montilab at UCLA",
+  "cite": "Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D., Owen, A. M., & Monti, M. M. (2014). Optimized brain extraction for pathological brains (optiBET). PloS one, 9(12), e115551.",
+  "url": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
+  "source": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
+  "license": "Apache-2.0",
+  "flywheel": "0",
+  "version": "1",
+  "custom":{
     "gear-builder": {
-      "category": "analysis",
-      "image": "rcali/optibet:1.0.0",
-    
-    "flywheel": {
-      "suite": "Flywheel optiBET Gear"
+      "category": "utility",
+      "image": "rcali/FSL_optibet"
     }
   },
-  "config": {
+    "config": {
       "Use FSL": {
         "description": "Script uses FSL for initial extraction default=True.",
         "default": true,
@@ -72,6 +65,6 @@
         }
       }
     }
-  },
-  "command":"bash optiBET.sh"
-}
+  }
+
+
