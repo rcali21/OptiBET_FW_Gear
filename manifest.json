@@ -1,0 +1,65 @@
+{
+    "name": "OptiBET-An Optimized Brain Extraction Tool using FSL BET",
+    "label": "FSL: FMRIB Automated Segmentation Tool (FAST4, v5.0.9)",
+    "description": " ",
+    "maintainer": "Ryan Cali <rcali@mgh.harvard.edu>",
+    "author": "Analysis Group, FMRIB, Oxford, UK./Montilab at UCLA",
+    "cite": "Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D., Owen, A. M., & Monti, M. M. (2014). Optimized brain extraction for pathological brains (optiBET). PloS one, 9(12), e115551.",
+    "url": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
+    "source": "https://montilab.psych.ucla.edu/fmri-wiki/optibet/",
+    "license": "Apache-2.0",
+    "flywheel": "0",
+    "version": "1",
+    "custom": {
+      "docker-image": "scitran/fsl-fast:v0.1.1"
+    },
+    "config": {
+      "nobias": {
+        "description": "script uses FSL for initial extraction (default)",
+        "default": false,
+        "type": "boolean",
+        "id": "-f"
+      },
+      "nopve": {
+        "description": "Script uses AFNI for initial extraction. default=false",
+        "default": false,
+        "type": "boolean",
+        "id": "-a"
+      },
+      "segments": {
+        "description": "Script uses MNI152_T1_1mm_brain_mask.nii.gz for mask default=True.",
+        "default": false,
+        "type": "boolean",
+        "id": "-o"
+      },
+      "mixel": {
+        "description": "Script uses MNI152_T1_2mm_brain_mask.nii.gz for mask.",
+        "default": false,
+        "type": "boolean",
+        "id": "-t"
+      },
+      "fHard": {
+        "description": "Script uses avg152T1_brain.nii.gz for mask",
+        "default": false,
+        "type": "boolean",
+        "id": "-g"
+      },
+      "Hyper": {
+        "description": "Use debug mode (will NOT delete intermediate files)",
+        "default": false,
+        "type": "boolean",
+        "id": "-d"
+      },
+    },
+    "inputs": {
+      "nifti": {
+        "description": "Anatomical NIfTI image, or multi-channel set of images, to be segmented.",
+        "base": "file",
+        "type": {
+          "enum": [
+            "nifti"
+          ]
+        }
+      }
+    }
+  }
