@@ -1,6 +1,6 @@
 # Flywheel Gear for optiBET 
 
-ptiBET: https://montilab.psych.ucla.edu/fmri-wiki/optibet/ 
+optiBET: https://montilab.psych.ucla.edu/fmri-wiki/optibet/ 
 
 optiBET is a shell script to perform brain-extractions even in patients brain, where extensive pathology is present.
 
@@ -8,7 +8,7 @@ Citation: Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D
 
 
 
-Gear info:
+# Gear info:
 
 Developed for use by the Neuroimaging of Coma and Consciousness Laboratory at Massachusetts General Hospital.
 
