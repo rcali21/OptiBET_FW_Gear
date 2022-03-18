@@ -10,11 +10,11 @@ Citation: Lutkenhoff, E. S., Rosenberg, M., Chiang, J., Zhang, K., Pickard, J. D
 
 FSL Brain Extraction Tool (BET): https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide
 
-M. Jenkinson, M. Pechaud, and S. Smith. BET2: MR-based estimation of brain, skull and scalp surfaces. In Eleventh Annual Meeting of the Organization for Human Brain Mapping, 2005.
+Citation: M. Jenkinson, M. Pechaud, and S. Smith. BET2: MR-based estimation of brain, skull and scalp surfaces. In Eleventh Annual Meeting of the Organization for Human Brain Mapping, 2005.
 
 AFNI 3dSkullStrip: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html
 
-Cox RW (1996). AFNI: software for analysis and visualization of functional magnetic resonance neuroimages. Comput Biomed Res 29(3):162-173. doi:10.1006/cbmr.1996.0014
+Citation: Cox RW (1996). AFNI: software for analysis and visualization of functional magnetic resonance neuroimages. Comput Biomed Res 29(3):162-173. doi:10.1006/cbmr.1996.0014
 https://pubmed.ncbi.nlm.nih.gov/8812068/
 
 
