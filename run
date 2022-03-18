@@ -1,0 +1,124 @@
+#! /bin/bash
+#
+#
+CONTAINER="[optibet]"
+echo -e "$CONTAINER  Initiated"
+
+# Built to flywheel-v0 spec.
+FLYWHEEL_BASE=/flywheel/v0
+
+
+OUTPUT_DIR=$FLYWHEEL_BASE/output
+INPUT_DIR=$FLYWHEEL_BASE/input/nifti
+MANIFEST=$FLYWHEEL_BASE/manifest.json
+CONFIG_FILE=$FLYWHEEL_BASE/config.json
+
+# Initialize config parameters
+use_fsl=' '
+use_afni=' '
+mni152_1mm_t1w_mask=' '
+mni152_2mm_t1w_mask=' '
+avg152t1_brain_mask=' '
+debug=' '
+
+
+# Generate flags from the manifest
+use_fsl_flag=$(jq -r <$MANIFEST '''.config.use_fsl.id')
+use_afni_flag=$(jq -r <$MANIFEST '''.config.use_afni.id')
+mni152_1mm_t1w_mask_flag=$(jq -r <$MANIFEST '''.config.mni152_1mm_t1w_mask.id')
+mni152_2mm_t1w_mask_flag=$(jq -r <$MANIFEST '''.config.mni152_2mm_t1w_mask.id')
+avg152t1_brain_mask_flag=$(jq -r <$MANIFEST '''.config.avg152t1_brain_mask.id')
+debug_flag=$(jq -r <$MANIFEST '''.config.debug.id')
+
+
+# Parse config options from CONFIG file or MANIFEST
+if [[ -f $CONFIG_FILE ]]; then
+  echo "$CONFIG_FILE found. Loading config..."
+
+  if [[ $(jq -r <$CONFIG_FILE '''.config.use_fsl') == 'true' ]]; then
+    use_fsl=$use_fsl_flag
+  fi
+
+  if [[ $(jq -r <$CONFIG_FILE '''.config.use_afni') == 'true' ]]; then
+    use_afni=$use_afni_flag
+  fi
+
+  if [[ $(jq -r <$CONFIG_FILE '''.config.mni152_1mm_t1w_mask') == 'true' ]]; then
+    mni152_1mm_t1w_mask=$mni152_1mm_t1w_mask_flag
+  fi
+
+  if [[ $(jq -r <$CONFIG_FILE '''.config.mni152_2mm_t1w_mask') == 'true' ]]; then
+    mni152_2mm_t1w_mask=$mni152_2mm_t1w_mask_flag
+  fi
+
+  if [[ $(jq -r <$CONFIG_FILE '''.config.avg152t1_brain_mask') == 'true' ]]; then
+    avg152t1_brain_mask=$avg152t1_brain_mask_flag
+  fi
+  
+  if [[ $(jq -r <$CONFIG_FILE '''.config.debug') == 'true' ]]; then
+    debug=$debug_flag
+  fi
+
+else
+  echo "$CONFIG_FILE not found. Loading defaults from $MANIFEST..."
+
+  if [[ $(jq -r <$MANIFEST '''.config.use_fsl.default') == 'true' ]]; then
+    use_fsl=$use_fsl_flag
+  fi
+
+  if [[ $(jq -r <$MANIFEST '''.config.use_afni.default') == 'true' ]]; then
+    use_afni=$use_afni_flag
+  fi
+
+  if [[ $(jq -r <$MANIFEST '''.config.mni152_1mm_t1w_mask.default') == 'true' ]]; then
+    mni152_1mm_t1w_mask=$mni152_1mm_t1w_mask_flag
+  fi
+
+  if [[ $(jq -r <$MANIFEST '''.config.mni152_2mm_t1w_mask.default') == 'true' ]]; then
+    mni152_2mm_t1w_mask=$mni152_2mm_t1w_mask_flag
+  fi
+
+  if [[ $(jq -r <$MANIFEST '''.config.avg152t1_brain_mask.default') == 'true' ]]; then
+    avg152t1_brain_mask=$avg152t1_brain_mask_flag
+  fi
+
+  if [[ $(jq -r <$MANIFEST '''.config.debug.default') == 'true' ]]; then
+    debug=$debug_flag
+  fi
+
+fi
+
+# Compile options string
+OPTIONS="$use_fsl $use_afni $mni152_1mm_t1w_mask $mni152_2mm_t1w_mask $avg152t1_brain_mask $debug"
+echo -e "optibet options are: ${OPTIONS}"
+
+# Execute the algorithm
+input_file=$(find $INPUT_DIR/* -maxdepth 0 -type f -name "*.nii*")
+if [[ -f $input_file ]]; then
+  
+  input_file_despaced=$(echo -e "${input_file}" | tr -d '[:space:]')
+  mv "${input_file}" "${input_file_despaced}"
+  input_file=$input_file_despaced
+  
+  echo "$CONTAINER  Running optibet on `basename "$input_file"`"
+  output_file_base=$OUTPUT_DIR/$(basename "$input_file" .nii.gz)
+  output_file_base=$OUTPUT_DIR/$(basename "$output_file_base" .nii)
+  bash /optiBET.sh -i "$input_file" $OPTIONS
+  STATUS=$?
+else
+  echo "$CONTAINER  No inputs were provided and $INPUT_DIR has no valid input files!"
+  exit 1
+fi
+
+# Check exit status
+if [[ $STATUS == 0 ]]
+  then
+    echo -e "$CONTAINER  Wrote: `ls $OUTPUT_DIR`"
+    echo -e "$CONTAINER  Done!"
+
+  else
+    echo "$CONTAINER  command returned a non-zero exit code = [$STATUS]."
+    exit 1
+fi
+
+exit 0
